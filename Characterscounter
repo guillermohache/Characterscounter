@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define EMPTY_CELL_SYMB " "
+void initField();
+
+int main()
+{
+   initField();
+   return(0);
+}
+
+
+void initField() {
+	FILE *pFile = fopen("fieldTemplate.txt", "r");
+	if (pFile == NULL) {
+		printf("Cant find field template");
+		return;
+	}
+
+	char c;
+	int i = 0;
+	int numberspaces=0;
+    int numbercharacters=0;
+
+	while((c=fgetc(pFile)) != EOF) {
+        i++;
+		if(c==*EMPTY_CELL_SYMB)
+        {
+            numberspaces++;
+        }
+        else{numbercharacters++;}
+		}
+    printf( "There are %d spaces \n", numberspaces);
+    printf( "There are %d characters\n", numbercharacters);
+
+}
